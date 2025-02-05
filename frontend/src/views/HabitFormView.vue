@@ -17,7 +17,7 @@ async function submitHabit() {
 
     console.log('Réponse du serveur:', response.data)
 
-    habitName.value = '' // Réinitialiser l'input après envoi
+    habitName.value = ''
   } catch (error) {
     console.error("Erreur lors de l'ajout de l'habitude:", error)
     alert('Une erreur est survenue.')
