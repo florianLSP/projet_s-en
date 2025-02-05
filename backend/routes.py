@@ -26,9 +26,13 @@ def register_routes(app, db):
                 }
             ), 201
 
-    @app.route("/delete_habit/<id>", methods=["DELETE"])
+    @app.route("/habit/<id>", methods=["DELETE"])
     def delete_habit(id):
-        db.session.delete(Habits.query.get(id))
+        habit = Habits.query.get(id)
+        if not habit:
+            return jsonify({"error": "Habitude introuvable"}), 404
+
+        db.session.delete(habit)
         db.session.commit()
 
-        return jsonify({"message": "L'habitude a été supprimée"}), 201
+        return jsonify({"message": "L'habitude a été supprimée"}), 200
