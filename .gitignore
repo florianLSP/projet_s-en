@@ -28,5 +28,6 @@ coverage
 *.sw?
 
 *.tsbuildinfo
-*.db
 
+backend/instance/
+*.db
