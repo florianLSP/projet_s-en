@@ -13,7 +13,7 @@ const habits: Ref<Array<Habit>> = ref([])
 
 async function deleteHabit(idHabit: number) {
   try {
-    const response = await axios.delete(`http://127.0.0.1:5000/delete_habit/${idHabit}`)
+    const response = await axios.delete(`http://127.0.0.1:5000/habit/${idHabit}`)
 
     console.log('Réponse du serveur:', response.data)
   } catch (error) {

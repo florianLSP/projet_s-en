@@ -11,7 +11,7 @@ async function submitHabit() {
   }
 
   try {
-    const response = await axios.post('http://127.0.0.1:5000/add_habit', {
+    const response = await axios.post('http://127.0.0.1:5000/habits', {
       name: habitName.value,
     })
 
