@@ -19,12 +19,18 @@ def register_routes(app, db):
             db.session.add(new_habit)
             db.session.commit()
 
-            return jsonify(
-                {
-                    "message": "Habitude ajoutée avec succès",
-                    "habit": {"id": new_habit.hid, "name": new_habit.name},
-                }
-            ), 201
+            return (
+                jsonify(
+                    {
+                        "message": "Habitude ajoutée avec succès",
+                        "habit": {
+                            "id": new_habit.hid,
+                            "name": new_habit.name,
+                        },
+                    }
+                ),
+                201,
+            )
 
     @app.route("/habit/<id>", methods=["DELETE"])
     def delete_habit(id):
