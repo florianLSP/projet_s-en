@@ -16,7 +16,8 @@ def create_app():
 
     register_routes(app, db)
 
-    migrate = Migrate(app, db)
+    Migrate(app, db)
+
     CORS(app)
 
     return app
