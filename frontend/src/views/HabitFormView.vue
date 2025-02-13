@@ -1,8 +1,10 @@
 <script setup lang="ts">
 import { ref } from 'vue'
 import axios from 'axios'
+import { useHabitStore } from '@/stores/habit'
 
 const habitName = ref('')
+const habitStore = useHabitStore()
 
 async function submitHabit() {
   if (!habitName.value) {
@@ -14,6 +16,9 @@ async function submitHabit() {
     const response = await axios.post('http://127.0.0.1:5000/habits', {
       name: habitName.value,
     })
+
+    const newHabit = response.data.habit
+    habitStore.habit.push({ id: newHabit.id, name: newHabit.name })
 
     console.log('Réponse du serveur:', response.data)
 
