@@ -4,7 +4,7 @@ import type { Ref } from 'vue'
 import axios from 'axios'
 import { TrashIcon } from '@heroicons/vue/24/solid'
 
-interface Habit {
+export interface Habit {
   id: number
   name: string
 }
