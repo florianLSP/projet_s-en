@@ -46,10 +46,10 @@ onMounted(fetchHabits)
 </script>
 
 <template>
-  <div class="flex">
+  <div class="flex dark:bg-gray-600 h-screen">
     <SideBar />
     <div class="flex-1 p-5 ml-64">
-      <div class="flex flex-col pt-5 w-full items-center">
+      <div class="flex flex-col pt-5 w-full items-center dark:text-white">
         <h2 class="text-2xl">Liste des habitudes:</h2>
         <ul>
           <li v-for="habit in habitStore.habit" :key="habit.id" class="flex items-center">
