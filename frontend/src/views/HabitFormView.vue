@@ -2,6 +2,7 @@
 import { ref } from 'vue'
 import axios from 'axios'
 import { useHabitStore } from '@/stores/habit'
+import SideBar from '@/components/SideBar.vue'
 
 const habitName = ref('')
 const habitStore = useHabitStore()
@@ -32,6 +33,7 @@ async function submitHabit() {
 
 <template>
   <div class="ml-5 pt-5">
+    <SideBar />
     <div>
       <router-link :to="{ name: 'home' }">
         <button
