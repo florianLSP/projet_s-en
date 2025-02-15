@@ -37,8 +37,8 @@ async function submitHabit() {
     <div class="flex-1 p-5 ml-64">
       <div class="flex pt-5 w-full justify-center">
         <form>
-          <div class="flex w-full">
-            <label for="name" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
+          <div class="flex w-full items-center space-x-2">
+            <label for="name" class="text-gray-900 dark:text-white whitespace-nowrap"
               >Nom de l'habitude:</label
             >
             <input
