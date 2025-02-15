@@ -52,6 +52,14 @@ async function submitHabit() {
           <router-link :to="{ name: 'home' }">
             <input
               @click="submitHabit()"
+              type="button"
+              value="Retour"
+              class="inline-flex items-center gap-x-1.5 rounded-md bg-gray-500 px-3 py-2 text-sm font-semibold text-white shadow-sm hover:bg-gray-700 cursor-pointer mt-5"
+            />
+          </router-link>
+          <router-link :to="{ name: 'home' }">
+            <input
+              @click="submitHabit()"
               type="submit"
               value="Submit"
               class="inline-flex items-center gap-x-1.5 rounded-md bg-gray-500 px-3 py-2 text-sm font-semibold text-white shadow-sm hover:bg-gray-700 cursor-pointer mt-5"
