@@ -50,22 +50,22 @@ async function submitHabit() {
           </div>
 
           <div class="flex justify-end">
-          <router-link :to="{ name: 'home' }">
-            <input
-              @click="submitHabit()"
-              type="button"
-              value="Retour"
-              class="inline-flex items-center gap-x-1.5 rounded-md bg-gray-500 px-3 py-2 text-sm font-semibold text-white shadow-sm hover:bg-gray-700 cursor-pointer mt-5"
-            />
-          </router-link>
-          <router-link :to="{ name: 'home' }">
-            <input
-              @click="submitHabit()"
-              type="submit"
-              value="Valider"
-              class="inline-flex items-center gap-x-1.5 rounded-md bg-gray-500 px-3 py-2 text-sm font-semibold text-white shadow-sm hover:bg-gray-700 cursor-pointer mt-5"
-            />
-          </router-link>
+            <router-link :to="{ name: 'home' }">
+              <input
+                @click="submitHabit()"
+                type="button"
+                value="Retour"
+                class="bg-sen-light_red mr-1.5 inline-flex items-center gap-x-1.5 rounded-md px-3 py-2 text-sm font-semibold text-white shadow-sm hover:bg-sen-dark_red cursor-pointer mt-5"
+              />
+            </router-link>
+            <router-link :to="{ name: 'home' }">
+              <input
+                @click="submitHabit()"
+                type="submit"
+                value="Valider"
+                class="bg-sen-light_green ml-1.5 inline-flex items-center gap-x-1.5 rounded-md px-3 py-2 text-sm font-semibold text-white shadow-sm hover:bg-sen-dark_green cursor-pointer mt-5"
+              />
+            </router-link>
           </div>
         </form>
       </div>

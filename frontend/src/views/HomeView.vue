@@ -56,7 +56,7 @@ onMounted(fetchHabits)
             {{ habit.id }}. {{ habit.name }}
             <button
               @click="deleteHabit(habit.id)"
-              class="flex items-center justify-center ml-2 rounded-md bg-red-500 p-2 text-white hover:bg-red-700 focus:outline-none focus:ring-2 focus:ring-red-500 cursor-pointer"
+              class="flex items-center justify-center ml-2 rounded-md bg-sen-light_red p-2 text-white hover:bg-sen-dark_red focus:outline-none focus:ring-2 focus:ring-red-500 cursor-pointer"
             >
               <TrashIcon class="h-5 w-5" />
             </button>
