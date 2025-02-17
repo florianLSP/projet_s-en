@@ -43,6 +43,14 @@ async function fetchHabits() {
   }
 }
 
+function formatDate(dateString: string) {
+  return new Date(dateString).toLocaleDateString('fr-FR', {
+    year: 'numeric',
+    month: 'numeric',
+    day: 'numeric',
+  })
+}
+
 onMounted(fetchHabits)
 </script>
 
@@ -54,7 +62,9 @@ onMounted(fetchHabits)
         <h2 class="text-2xl">Liste des habitudes:</h2>
         <ul>
           <li v-for="habit in habitStore.habit" :key="habit.id" class="flex items-center pt-2">
-            <span class="flex-1 whitespace-nowrap">{{ habit.id }}. {{ habit.name }}</span>
+            <span class="flex-1 whitespace-nowrap"
+              >{{ habit.id }}. {{ habit.name }} - {{ formatDate(habit.creationDate) }}</span
+            >
             <button
               @click="deleteHabit(habit.id)"
               class="ml-5 flex items-center justify-center rounded-md bg-sen-light_red p-2 text-white hover:bg-sen-dark_red focus:outline-none focus:ring-2 focus:ring-red-500 cursor-pointer"
