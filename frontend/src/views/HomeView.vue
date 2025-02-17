@@ -9,6 +9,7 @@ import SideBar from '@/components/SideBar.vue'
 export interface Habit {
   id: number
   name: string
+  creationDate: string
 }
 
 const habitStore = useHabitStore()
