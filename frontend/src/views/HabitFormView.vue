@@ -19,7 +19,11 @@ async function submitHabit() {
     })
 
     const newHabit = response.data.habit
-    habitStore.habit.push({ id: newHabit.id, name: newHabit.name })
+    habitStore.habit.push({
+      id: newHabit.id,
+      name: newHabit.name,
+      creationDate: newHabit.creationDate,
+    })
 
     console.log('Réponse du serveur:', response.data)
 
