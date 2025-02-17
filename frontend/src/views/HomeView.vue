@@ -52,11 +52,11 @@ onMounted(fetchHabits)
       <div class="flex flex-col pt-5 w-full items-center dark:text-white">
         <h2 class="text-2xl">Liste des habitudes:</h2>
         <ul>
-          <li v-for="habit in habitStore.habit" :key="habit.id" class="flex items-center">
-            {{ habit.id }}. {{ habit.name }}
+          <li v-for="habit in habitStore.habit" :key="habit.id" class="flex items-center pt-2">
+            <span class="flex-1 whitespace-nowrap">{{ habit.id }}. {{ habit.name }}</span>
             <button
               @click="deleteHabit(habit.id)"
-              class="flex items-center justify-center ml-2 rounded-md bg-sen-light_red p-2 text-white hover:bg-sen-dark_red focus:outline-none focus:ring-2 focus:ring-red-500 cursor-pointer"
+              class="ml-5 flex items-center justify-center rounded-md bg-sen-light_red p-2 text-white hover:bg-sen-dark_red focus:outline-none focus:ring-2 focus:ring-red-500 cursor-pointer"
             >
               <TrashIcon class="h-5 w-5" />
             </button>
