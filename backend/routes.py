@@ -8,8 +8,15 @@ def register_routes(app, db):
         if request.method == "GET":
             habits = []
             for habit in Habits.query.all():
-                habits.append({"id": habit.hid, "name": habit.name})
+                habits.append(
+                    {
+                        "id": habit.hid,
+                        "name": habit.name,
+                        "creationDate": habit.creation_date,
+                    }
+                )
             return jsonify(habits)
+
         elif request.method == "POST":
             data = request.get_json()
             if not data or "name" not in data:
@@ -26,6 +33,7 @@ def register_routes(app, db):
                         "habit": {
                             "id": new_habit.hid,
                             "name": new_habit.name,
+                            "creationDate": new_habit.creation_date,
                         },
                     }
                 ),
