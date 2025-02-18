@@ -80,7 +80,7 @@ onBeforeUnmount(() => {
       >
         <div
           v-show="cardMenu"
-          class="z-10 absolute right-0 mt-2 text-base list-none bg-white divide-y divide-gray-100 rounded-lg shadow-sm w-44 dark:bg-gray-700"
+          class="z-10 absolute left-36 mt-8 ml-24 text-base list-none bg-white divide-y divide-gray-100 rounded-lg shadow-sm w-44 dark:bg-gray-700"
         >
           <ul class="py-2" aria-labelledby="dropdownButton">
             <li>
