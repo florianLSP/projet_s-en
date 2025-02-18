@@ -36,7 +36,7 @@ onMounted(fetchHabits)
         <div v-for="habit in habitStore.habits" :key="habit.id" class="flex items-center pt-2 px-6">
           <router-link :to="{ name: 'habit-details', params: { id: habit.id } }">
             <HabitCard
-              class="cursor-pointer"
+              class="cursor-pointer transition-transform transform hover:scale-105 hover:dark:border-gray-500"
               :id="habit.id"
               :name="habit.name"
               :description="habit.description"
