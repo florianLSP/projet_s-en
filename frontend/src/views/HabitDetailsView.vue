@@ -31,7 +31,7 @@ onMounted(fetchHabits)
         <ul>
           <li>{{ habitStore.selectedHabit.name }}</li>
           <li>{{ habitStore.selectedHabit.description }}</li>
-          <li>{{ habitStore.selectedHabit.creationDate }}</li>
+          <li>{{ habitStore.formatDate(habitStore.selectedHabit.creationDate) }}</li>
         </ul>
       </div>
     </div>
