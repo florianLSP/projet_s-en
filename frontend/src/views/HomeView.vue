@@ -25,14 +25,6 @@ async function fetchHabits() {
   }
 }
 
-function formatDate(dateString: string) {
-  return new Date(dateString).toLocaleDateString('fr-FR', {
-    year: 'numeric',
-    month: 'numeric',
-    day: 'numeric',
-  })
-}
-
 onMounted(fetchHabits)
 </script>
 
@@ -48,7 +40,7 @@ onMounted(fetchHabits)
               :id="habit.id"
               :name="habit.name"
               :description="habit.description"
-              :creationDate="formatDate(habit.creationDate)"
+              :creationDate="habitStore.formatDate(habit.creationDate)"
             />
           </router-link>
         </div>
