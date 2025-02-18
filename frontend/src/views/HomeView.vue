@@ -45,6 +45,7 @@ onMounted(fetchHabits)
           <HabitCard
             :id="habit.id"
             :name="habit.name"
+            :description="habit.description"
             :creationDate="formatDate(habit.creationDate)"
           />
         </div>

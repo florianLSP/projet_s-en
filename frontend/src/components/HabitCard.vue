@@ -13,6 +13,7 @@ const props = defineProps({
     required: true,
   },
   name: String,
+  description: String,
   creationDate: String,
 })
 
