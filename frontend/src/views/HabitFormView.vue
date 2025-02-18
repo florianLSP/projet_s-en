@@ -21,7 +21,7 @@ async function submitHabit() {
     })
 
     const newHabit = response.data.habit
-    habitStore.habit.push({
+    habitStore.habits.push({
       id: newHabit.id,
       name: newHabit.name,
       description: newHabit.description,

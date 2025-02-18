@@ -32,10 +32,10 @@ async function deleteHabit(idHabit: Number) {
   try {
     const response = await axios.delete(`http://127.0.0.1:5000/habit/${idHabit}`)
 
-    const index = habitStore.habit.findIndex((habit) => habit.id === idHabit)
+    const index = habitStore.habits.findIndex((habit) => habit.id === idHabit)
 
     if (index !== -1) {
-      habitStore.habit.splice(index, 1)
+      habitStore.habits.splice(index, 1)
       console.log('Suppression effectuée!')
     } else {
       console.log("L'id n'a pas été trouvé.")

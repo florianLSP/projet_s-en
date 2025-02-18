@@ -19,7 +19,7 @@ const habitStore = useHabitStore()
 async function fetchHabits() {
   try {
     const response = await axios.get('http://127.0.0.1:5000/habits')
-    habitStore.habit = response.data
+    habitStore.habits = response.data
   } catch (error) {
     console.error('Erreur lors de la récupération des habitudes: ', error)
   }
@@ -41,7 +41,7 @@ onMounted(fetchHabits)
     <SideBar />
     <div class="flex-1 p-5 ml-64">
       <div class="flex pt-5 w-full justify-center dark:text-white">
-        <div v-for="habit in habitStore.habit" :key="habit.id" class="flex items-center pt-2 px-6">
+        <div v-for="habit in habitStore.habits" :key="habit.id" class="flex items-center pt-2 px-6">
           <router-link :to="{ name: 'habit-details', params: { id: habit.id } }">
             <HabitCard
               class="cursor-pointer"
