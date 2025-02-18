@@ -52,3 +52,18 @@ def register_routes(app, db):
         db.session.commit()
 
         return jsonify({"message": "L'habitude a été supprimée"}), 200
+
+    @app.route("/habit/<id>", methods=["GET"])
+    def habit(id):
+        if request.method == "GET":
+            query = Habits.query.get(id)
+            habit = {
+                "id": query.hid,
+                "name": query.name,
+                "description": query.description,
+                "creationDate": query.creation_date,
+            }
+            if not habit:
+                return jsonify({"error": "Habitude introuvable"}), 404
+
+            return jsonify(habit)
