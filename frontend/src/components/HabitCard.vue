@@ -106,9 +106,10 @@ onBeforeUnmount(() => {
       <h5 class="mb-1 text-xl font-medium text-gray-900 dark:text-white">
         {{ props.name }}
       </h5>
-      <span class="text-sm text-gray-500 dark:text-gray-400">
+      <p class="text-sm text-gray-500 dark:text-gray-400">
         {{ props.creationDate }}
-      </span>
+      </p>
+      <p>{{ props.description }}</p>
     </div>
   </div>
 </template>
