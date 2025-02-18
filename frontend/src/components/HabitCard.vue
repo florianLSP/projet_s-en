@@ -63,7 +63,7 @@ onBeforeUnmount(() => {
     <div class="flex justify-end px-4 pt-4 relative dropdown-wrapper">
       <button
         @click.stop="toggleMenu"
-        class="inline-block text-red-500 dark:text-red-400 hover:bg-red-100 dark:hover:bg-gray-700 focus:ring-4 focus:outline-none focus:ring-gray-200 dark:focus:ring-gray-700 rounded-lg text-sm p-1.5"
+        class="inline-block text-gray-500 dark:text-gray-400 hover:bg-gray-100 dark:hover:bg-gray-700 focus:ring-4 focus:outline-none focus:ring-gray-200 dark:focus:ring-gray-700 rounded-lg text-sm p-1.5"
         type="button"
       >
         <span class="sr-only">Open dropdown</span>
@@ -80,7 +80,7 @@ onBeforeUnmount(() => {
       >
         <div
           v-show="cardMenu"
-          class="z-10 absolute left-36 mt-8 ml-24 text-base list-none bg-white divide-y divide-gray-100 rounded-lg shadow-sm w-44 dark:bg-gray-700"
+          class="z-10 absolute left-36 mt-8 ml-24 text-base list-none bg-white divide-y divide-gray-100 rounded-lg shadow-lg w-44 dark:bg-gray-700"
         >
           <ul class="py-2" aria-labelledby="dropdownButton">
             <li>
