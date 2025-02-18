@@ -12,6 +12,7 @@ def register_routes(app, db):
                     {
                         "id": habit.hid,
                         "name": habit.name,
+                        "description": habit.description,
                         "creationDate": habit.creation_date,
                     }
                 )
@@ -22,7 +23,7 @@ def register_routes(app, db):
             if not data or "name" not in data:
                 return jsonify({"error": "le champ 'name' est requis"}), 400
 
-            new_habit = Habits(name=data["name"])
+            new_habit = Habits(name=data["name"], description=data["description"])
             db.session.add(new_habit)
             db.session.commit()
 
@@ -33,6 +34,7 @@ def register_routes(app, db):
                         "habit": {
                             "id": new_habit.hid,
                             "name": new_habit.name,
+                            "description": new_habit.description,
                             "creationDate": new_habit.creation_date,
                         },
                     }

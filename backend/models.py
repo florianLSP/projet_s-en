@@ -7,6 +7,7 @@ class Habits(db.Model):
 
     hid = db.Column(db.Integer, primary_key=True)
     name = db.Column(db.Text, nullable=False)
+    description = db.Column(db.Text)
     creation_date = db.Column(db.DateTime, default=datetime.datetime.now)
 
     def __repr__(self):
