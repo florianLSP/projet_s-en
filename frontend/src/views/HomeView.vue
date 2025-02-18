@@ -15,26 +15,6 @@ export interface Habit {
 
 const habitStore = useHabitStore()
 
-async function deleteHabit(idHabit: number) {
-  try {
-    const response = await axios.delete(`http://127.0.0.1:5000/habit/${idHabit}`)
-
-    const index = habitStore.habit.findIndex((habit) => habit.id === idHabit)
-
-    if (index !== -1) {
-      habitStore.habit.splice(index, 1)
-      console.log('Suppression effectuée!')
-    } else {
-      console.log("L'id n'a pas été trouvé.")
-    }
-
-    console.log('Réponse du serveur:', response.data)
-  } catch (error) {
-    console.error("Erreur lors de la suppresion de l'habitude:", error)
-    alert('Une erreur est survenue.')
-  }
-}
-
 async function fetchHabits() {
   try {
     const response = await axios.get('http://127.0.0.1:5000/habits')
@@ -61,7 +41,11 @@ onMounted(fetchHabits)
     <div class="flex-1 p-5 ml-64">
       <div class="flex pt-5 w-full justify-center dark:text-white">
         <div v-for="habit in habitStore.habit" :key="habit.id" class="flex items-center pt-2 px-6">
-          <HabitCard :name="habit.name" :creationDate="formatDate(habit.creationDate)" />
+          <HabitCard
+            :id="habit.id"
+            :name="habit.name"
+            :creationDate="formatDate(habit.creationDate)"
+          />
         </div>
       </div>
     </div>

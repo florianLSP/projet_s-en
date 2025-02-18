@@ -1,10 +1,17 @@
 <script setup lang="ts">
 import { ref, onMounted, onBeforeUnmount } from 'vue'
 import { EllipsisHorizontalIcon } from '@heroicons/vue/24/solid'
+import axios from 'axios'
+import { useHabitStore } from '@/stores/habit'
 
 const cardMenu = ref(false)
+const habitStore = useHabitStore()
 
 const props = defineProps({
+  id: {
+    type: Number,
+    required: true,
+  },
   name: String,
   creationDate: String,
 })
@@ -17,6 +24,26 @@ function handleClickOutside(event: Event) {
   const target = event.target as HTMLElement
   if (!target.closest('.dropdown-wrapper')) {
     cardMenu.value = false
+  }
+}
+
+async function deleteHabit(idHabit: Number) {
+  try {
+    const response = await axios.delete(`http://127.0.0.1:5000/habit/${idHabit}`)
+
+    const index = habitStore.habit.findIndex((habit) => habit.id === idHabit)
+
+    if (index !== -1) {
+      habitStore.habit.splice(index, 1)
+      console.log('Suppression effectuée!')
+    } else {
+      console.log("L'id n'a pas été trouvé.")
+    }
+
+    console.log('Réponse du serveur:', response.data)
+  } catch (error) {
+    console.error("Erreur lors de la suppresion de l'habitude:", error)
+    alert('Une erreur est survenue.')
   }
 }
 
@@ -63,12 +90,11 @@ onBeforeUnmount(() => {
                 >Edit</a
               >
             </li>
-            <li>
-              <a
-                href="#"
-                class="block px-4 py-2 text-sm text-red-600 hover:bg-gray-100 dark:hover:bg-gray-600 dark:text-gray-200 dark:hover:text-white"
-                >Delete</a
-              >
+            <li
+              @click="deleteHabit(props.id)"
+              class="block px-4 py-2 text-sm text-red-600 hover:bg-gray-100 dark:hover:bg-gray-600 dark:text-gray-200 dark:hover:text-white"
+            >
+              Delete
             </li>
           </ul>
         </div>
