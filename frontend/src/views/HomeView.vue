@@ -42,12 +42,15 @@ onMounted(fetchHabits)
     <div class="flex-1 p-5 ml-64">
       <div class="flex pt-5 w-full justify-center dark:text-white">
         <div v-for="habit in habitStore.habit" :key="habit.id" class="flex items-center pt-2 px-6">
-          <HabitCard
-            :id="habit.id"
-            :name="habit.name"
-            :description="habit.description"
-            :creationDate="formatDate(habit.creationDate)"
-          />
+          <router-link :to="{ name: 'habit-details', params: { id: habit.id } }">
+            <HabitCard
+              class="cursor-pointer"
+              :id="habit.id"
+              :name="habit.name"
+              :description="habit.description"
+              :creationDate="formatDate(habit.creationDate)"
+            />
+          </router-link>
         </div>
       </div>
     </div>
