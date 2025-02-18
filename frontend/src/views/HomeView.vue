@@ -5,6 +5,7 @@ import axios from 'axios'
 import { TrashIcon } from '@heroicons/vue/24/solid'
 import { useHabitStore } from '@/stores/habit'
 import SideBar from '@/components/SideBar.vue'
+import HabitCard from '@/components/HabitCard.vue'
 
 export interface Habit {
   id: number
@@ -58,21 +59,10 @@ onMounted(fetchHabits)
   <div class="flex dark:bg-gray-600 h-screen">
     <SideBar />
     <div class="flex-1 p-5 ml-64">
-      <div class="flex flex-col pt-5 w-full items-center dark:text-white">
-        <h2 class="text-2xl">Liste des habitudes:</h2>
-        <ul>
-          <li v-for="habit in habitStore.habit" :key="habit.id" class="flex items-center pt-2">
-            <span class="flex-1 whitespace-nowrap"
-              >{{ habit.id }}. {{ habit.name }} - {{ formatDate(habit.creationDate) }}</span
-            >
-            <button
-              @click="deleteHabit(habit.id)"
-              class="ml-5 flex items-center justify-center rounded-md bg-sen-light_red p-2 text-white hover:bg-sen-dark_red focus:outline-none focus:ring-2 focus:ring-red-500 cursor-pointer"
-            >
-              <TrashIcon class="h-5 w-5" />
-            </button>
-          </li>
-        </ul>
+      <div class="flex pt-5 w-full justify-center dark:text-white">
+        <div v-for="habit in habitStore.habit" :key="habit.id" class="flex items-center pt-2 px-6">
+          <HabitCard :name="habit.name" :creationDate="formatDate(habit.creationDate)" />
+        </div>
       </div>
     </div>
   </div>
