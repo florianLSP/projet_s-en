@@ -10,6 +10,7 @@ import HabitCard from '@/components/HabitCard.vue'
 export interface Habit {
   id: number
   name: string
+  description: string
   creationDate: string
 }
 
