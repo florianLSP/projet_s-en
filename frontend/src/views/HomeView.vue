@@ -1,8 +1,6 @@
 <script setup lang="ts">
-import { ref, onMounted } from 'vue'
-import type { Ref } from 'vue'
+import { onMounted } from 'vue'
 import axios from 'axios'
-import { TrashIcon } from '@heroicons/vue/24/solid'
 import { useHabitStore } from '@/stores/habit'
 import SideBar from '@/components/SideBar.vue'
 import HabitCard from '@/components/HabitCard.vue'
