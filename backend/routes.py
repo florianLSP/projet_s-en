@@ -1,16 +1,17 @@
 from flask import request, jsonify
-from models import Habits
+from models import Habit
 
 
 def register_routes(app, db):
     @app.route("/habits", methods=["GET", "POST"])
     def habits():
         if request.method == "GET":
+            habits = Habit.query.all()
             habits = []
-            for habit in Habits.query.all():
+            for habit in Habit.query.all():
                 habits.append(
                     {
-                        "id": habit.hid,
+                        "id": habit.habit_id,
                         "name": habit.name,
                         "description": habit.description,
                         "creationDate": habit.creation_date,
@@ -23,7 +24,7 @@ def register_routes(app, db):
             if not data or "name" not in data:
                 return jsonify({"error": "le champ 'name' est requis"}), 400
 
-            new_habit = Habits(name=data["name"], description=data["description"])
+            new_habit = Habit(name=data["name"], description=data["description"])
             db.session.add(new_habit)
             db.session.commit()
 
@@ -32,7 +33,7 @@ def register_routes(app, db):
                     {
                         "message": "Habitude ajoutée avec succès",
                         "habit": {
-                            "id": new_habit.hid,
+                            "id": new_habit.habit_id,
                             "name": new_habit.name,
                             "description": new_habit.description,
                             "creationDate": new_habit.creation_date,
@@ -44,7 +45,7 @@ def register_routes(app, db):
 
     @app.route("/habit/<id>", methods=["DELETE"])
     def delete_habit(id):
-        habit = Habits.query.get(id)
+        habit = Habit.query.get(id)
         if not habit:
             return jsonify({"error": "Habitude introuvable"}), 404
 
@@ -56,9 +57,9 @@ def register_routes(app, db):
     @app.route("/habit/<id>", methods=["GET"])
     def habit(id):
         if request.method == "GET":
-            query = Habits.query.get(id)
+            query = Habit.query.get(id)
             habit = {
-                "id": query.hid,
+                "id": query.habit_id,
                 "name": query.name,
                 "description": query.description,
                 "creationDate": query.creation_date,
