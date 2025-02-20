@@ -32,3 +32,5 @@ coverage
 **/*.db
 backend/migrations
 .venv
+TODO
+.DS_Store
