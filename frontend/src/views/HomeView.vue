@@ -10,6 +10,12 @@ export interface Habit {
   name: string
   description: string
   creationDate: string
+  habitLogs: Array<HabitLog>
+}
+
+export interface HabitLog {
+  id: number
+  date: Array<string>
 }
 
 const habitStore = useHabitStore()
