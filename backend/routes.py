@@ -48,8 +48,8 @@ def register_routes(app, db):
                     "name": habit.name,
                     "description": habit.description,
                     "creationDate": habit.creation_date,
-                    "logs": [
-                        {"id": log.habit_log_id, "date": log.date}
+                    "habitLogs": [
+                        {"habit_id": log.habit_id, "date": log.date}
                         for log in habit.habit_logs
                     ],
                 }
@@ -88,7 +88,7 @@ def register_routes(app, db):
                         "description": new_habit.description,
                         "creationDate": new_habit.creation_date,
                         "habit_logs": [
-                            {"id": log.habit_log_id, "date": log.date}
+                            {"habit_id": log.habit_id, "date": log.date}
                             for log in new_habit.habit_logs
                         ],
                     },
