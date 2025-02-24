@@ -15,7 +15,7 @@ export interface Habit {
 
 export interface HabitLog {
   id: number
-  date: Array<string>
+  date: string
 }
 
 const habitStore = useHabitStore()
