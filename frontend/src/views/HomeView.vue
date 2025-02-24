@@ -38,14 +38,14 @@ onMounted(fetchHabits)
     <div class="flex-1 p-5 ml-64">
       <div class="flex pt-5 w-full justify-center dark:text-white">
         <div v-for="habit in habitStore.habits" :key="habit.id" class="flex items-center pt-2 px-6">
-            <HabitCard
-              class="cursor-pointer transition-transform transform hover:scale-105 hover:dark:border-gray-500"
-              :id="habit.id"
-              :name="habit.name"
-              :description="habit.description"
-              :creationDate="habit.creationDate"
-              :logs=habit.habitLogs
-            />
+          <HabitCard
+            class="cursor-pointer transition-transform transform hover:scale-105 hover:dark:border-gray-500"
+            :id="habit.id"
+            :name="habit.name"
+            :description="habit.description"
+            :creationDate="habit.creationDate"
+            :logs="habit.habitLogs"
+          />
         </div>
       </div>
     </div>
