@@ -56,6 +56,27 @@ async function deleteHabit(idHabit: Number) {
   }
 }
 
+function lastLog(logs: Array<HabitLog>) {
+  if (logs.length == 0) {
+    return props.creationDate
+  }
+  const currentDate = new Date()
+  let closestDate = new Date(logs[0].date)
+  let smallestDiff = Math.abs(currentDate.getTime() - closestDate.getTime())
+
+  logs.forEach((log) => {
+    const logDate = new Date(log.date)
+    const diff = Math.abs(currentDate.getTime() - logDate.getTime())
+
+    if (diff < smallestDiff) {
+      smallestDiff = diff
+      closestDate = logDate
+    }
+  })
+
+  return closestDate.toLocaleString()
+}
+
 onMounted(() => {
   window.addEventListener('click', handleClickOutside)
 })
@@ -115,9 +136,10 @@ onBeforeUnmount(() => {
           {{ props.name }}
         </h5>
         <p class="text-sm text-gray-500 dark:text-gray-400">
-          Date de création: {{ props.creationDate }}
+          Date de création: {{ habitStore.formatDate(props.creationDate) }}
         </p>
         <p>{{ props.description }}</p>
+        <p>Dernière entrée: {{ lastLog(props.logs) }}</p>
       </div>
     </router-link>
   </div>
