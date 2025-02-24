@@ -107,7 +107,7 @@ onBeforeUnmount(() => {
           {{ props.name }}
         </h5>
         <p class="text-sm text-gray-500 dark:text-gray-400">
-          {{ props.creationDate }}
+          Date de création: {{ props.creationDate }}
         </p>
         <p>{{ props.description }}</p>
       </div>
