@@ -3,6 +3,7 @@ import { ref, onMounted, onBeforeUnmount } from 'vue'
 import { EllipsisHorizontalIcon } from '@heroicons/vue/24/solid'
 import axios from 'axios'
 import { useHabitStore } from '@/stores/habit'
+import type { HabitLog } from '@/views/HomeView.vue'
 
 const cardMenu = ref(false)
 const habitStore = useHabitStore()
@@ -14,7 +15,14 @@ const props = defineProps({
   },
   name: String,
   description: String,
-  creationDate: String,
+  creationDate: {
+    type: String,
+    required: true,
+  },
+  logs: {
+    type: Array<HabitLog>,
+    required: true,
+  },
 })
 
 function toggleMenu() {
