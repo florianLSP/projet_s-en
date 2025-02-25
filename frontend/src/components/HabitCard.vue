@@ -60,21 +60,7 @@ function lastLog(logs: Array<HabitLog>) {
   if (logs.length == 0) {
     return habitStore.formatDate(props.creationDate)
   }
-  const currentDate = new Date()
-  let closestDate = new Date(logs[0].date)
-  let smallestDiff = Math.abs(currentDate.getTime() - closestDate.getTime())
-
-  logs.forEach((log) => {
-    const logDate = new Date(log.date)
-    const diff = Math.abs(currentDate.getTime() - logDate.getTime())
-
-    if (diff < smallestDiff) {
-      smallestDiff = diff
-      closestDate = logDate
-    }
-  })
-
-  return closestDate.toLocaleString()
+  return habitStore.formatDate(logs[0].date)
 }
 
 onMounted(() => {
