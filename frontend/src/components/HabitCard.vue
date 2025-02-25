@@ -58,7 +58,7 @@ async function deleteHabit(idHabit: Number) {
 
 function lastLog(logs: Array<HabitLog>) {
   if (logs.length == 0) {
-    return props.creationDate
+    return habitStore.formatDate(props.creationDate)
   }
   const currentDate = new Date()
   let closestDate = new Date(logs[0].date)
