@@ -39,7 +39,6 @@ def register_routes(app, db):
             return jsonify(habit)
 
     def get_habits():
-        habits = Habit.query.all()
         habits = []
         for habit in Habit.query.all():
             habits.append(
