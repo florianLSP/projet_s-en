@@ -1,6 +1,7 @@
 from flask import request, jsonify
 from models import Habit, HabitLog
 from datetime import datetime
+from sqlalchemy import desc
 
 
 def register_routes(app, db):
@@ -49,7 +50,9 @@ def register_routes(app, db):
                     "creationDate": habit.creation_date,
                     "habitLogs": [
                         {"habit_id": log.habit_id, "date": log.date}
-                        for log in habit.habit_logs
+                        for log in HabitLog.query.filter_by(habit_id=habit.habit_id)
+                        .order_by(desc(HabitLog.date))
+                        .all()
                     ],
                 }
             )
