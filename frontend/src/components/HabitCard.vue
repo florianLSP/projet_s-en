@@ -117,15 +117,20 @@ onBeforeUnmount(() => {
       </transition>
     </div>
     <router-link :to="{ name: 'habit-details', params: { id: props.id } }">
-      <div class="flex flex-col items-center pb-10">
-        <h5 class="mb-1 text-xl font-medium text-gray-900 dark:text-white">
-          {{ props.name }}
-        </h5>
-        <p class="text-sm text-gray-500 dark:text-gray-400">
-          Date de création: {{ habitStore.formatDate(props.creationDate) }}
-        </p>
-        <p>{{ props.description }}</p>
-        <p>Dernière entrée: {{ lastLog(props.logs) }}</p>
+      <div class="flex flex-col px-4 pb-5 space-y-4">
+        <div class="flex flex-col items-center">
+          <h5 class="mb-1 text-xl font-medium text-gray-900 dark:text-white capitalize">
+            {{ props.name }}
+          </h5>
+          <p class="text-sm text-gray-500 dark:text-gray-400">
+            Date de création: {{ habitStore.formatDate(props.creationDate) }}
+          </p>
+          <p class="italic pt-2 text-center">"{{ props.description }}"</p>
+        </div>
+
+        <div class="space-y-2">
+          <p><span class="font-semibold">Dernière entrée: </span>{{ lastLog(props.logs) }}</p>
+        </div>
       </div>
     </router-link>
   </div>
