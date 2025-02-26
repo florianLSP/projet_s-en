@@ -65,6 +65,7 @@ async function submitHabit() {
                 v-model="habitName"
                 type="text"
                 name="name"
+                maxlength="25"
                 class="mt-1 p-2 border focus:ring-0 rounded-lg focus:ring-sen-gray focus:border-sen-gray bg-gray-50 dark:bg-gray-700 dark:border-gray-600 dark:text-white outline-none"
               />
             </div>
@@ -75,6 +76,7 @@ async function submitHabit() {
                 v-model="habitDescription"
                 type="text"
                 name="description"
+                maxlength="40"
                 class="mt-1 p-2 border rounded-lg focus:ring-sen-gray focus:border-sen-gray bg-gray-50 dark:bg-gray-700 dark:border-gray-600 dark:text-white outline-none"
               />
             </div>
