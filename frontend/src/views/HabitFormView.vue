@@ -40,6 +40,8 @@ async function submitHabit() {
     console.log('Réponse du serveur:', response.data)
 
     habitName.value = ''
+    habitDescription.value = ''
+    isNewHabit.value = "true"
     router.push({ name: 'home' })
   } catch (error) {
     console.error("Erreur lors de l'ajout de l'habitude:", error)
