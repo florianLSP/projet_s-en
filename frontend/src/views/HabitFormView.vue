@@ -7,12 +7,17 @@ import VueDatePicker from '@vuepic/vue-datepicker'
 import '@vuepic/vue-datepicker/dist/main.css'
 import type { HabitLog } from './HomeView.vue'
 import router from '@/router'
+import EmojiPicker from 'vue3-emoji-picker'
+import 'vue3-emoji-picker/css'
+import { FaceSmileIcon } from '@heroicons/vue/24/outline'
 
 const habitName = ref('')
 const habitDescription = ref('')
 const habitStore = useHabitStore()
 const isNewHabit = ref('true')
 const date = ref()
+const emojiPicker = ref(false)
+const onSelectEmoji = ref()
 
 async function submitHabit() {
   if (!habitName.value) {
@@ -41,7 +46,7 @@ async function submitHabit() {
 
     habitName.value = ''
     habitDescription.value = ''
-    isNewHabit.value = "true"
+    isNewHabit.value = 'true'
     router.push({ name: 'home' })
   } catch (error) {
     console.error("Erreur lors de l'ajout de l'habitude:", error)
@@ -63,13 +68,29 @@ async function submitHabit() {
           <div class="grid gap-4">
             <div class="flex flex-col">
               <label for="name" class="text-gray-900 dark:text-white">Nom de l'habitude :</label>
-              <input
-                v-model="habitName"
-                type="text"
-                name="name"
-                maxlength="25"
-                class="mt-1 p-2 border focus:ring-0 rounded-lg focus:ring-sen-gray focus:border-sen-gray bg-gray-50 dark:bg-gray-700 dark:border-gray-600 dark:text-white outline-none"
-              />
+              <div class="relative flex items-center">
+                <input
+                  v-model="habitName"
+                  type="text"
+                  name="name"
+                  maxlength="25"
+                  class="mt-1 p-2 border focus:ring-0 rounded-lg focus:ring-sen-gray focus:border-sen-gray bg-gray-50 dark:bg-gray-700 dark:border-gray-600 dark:text-white outline-none flex-1"
+                />
+                <button
+                  @click="emojiPicker = !emojiPicker"
+                  type="button"
+                  class="absolute right-2 bg-gray-50 text-sen-gray p-2 rounded-lg hover:bg-gray-200 transition"
+                >
+                  <FaceSmileIcon class="h-5 w-5" />
+                </button>
+
+                <div
+                  v-if="emojiPicker"
+                  class="absolute top-full right-0 z-50 bg-white shadow-lg rounded-lg"
+                >
+                  <EmojiPicker :native="true" @select="onSelectEmoji" />
+                </div>
+              </div>
             </div>
 
             <div class="flex flex-col">
