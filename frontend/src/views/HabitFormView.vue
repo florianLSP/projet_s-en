@@ -35,6 +35,7 @@ async function submitHabit() {
       name: habitName.value,
       description: habitDescription.value,
       habitLogs: formattedDates,
+      emoji: selectedEmoji.value,
     })
 
     const newHabit = response.data.habit
@@ -44,6 +45,7 @@ async function submitHabit() {
       description: newHabit.description,
       creationDate: newHabit.creationDate,
       habitLogs: newHabit.habit_logs,
+      emoji: newHabit.emoji,
     })
 
     console.log('Réponse du serveur:', response.data)
@@ -51,6 +53,7 @@ async function submitHabit() {
     habitName.value = ''
     habitDescription.value = ''
     isNewHabit.value = 'true'
+    selectedEmoji.value = null
     router.push({ name: 'home' })
   } catch (error) {
     console.error("Erreur lors de l'ajout de l'habitude:", error)
