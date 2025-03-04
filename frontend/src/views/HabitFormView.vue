@@ -17,7 +17,11 @@ const habitStore = useHabitStore()
 const isNewHabit = ref('true')
 const date = ref()
 const emojiPicker = ref(false)
-const onSelectEmoji = ref()
+const selectedEmoji = ref(null)
+
+function onSelectEmoji(emoji: any) {
+  selectedEmoji.value = emoji.i
+}
 
 async function submitHabit() {
   if (!habitName.value) {
@@ -81,7 +85,10 @@ async function submitHabit() {
                   type="button"
                   class="absolute right-2 bg-gray-50 text-sen-gray p-2 rounded-lg hover:bg-gray-200 transition"
                 >
-                  <FaceSmileIcon class="h-5 w-5" />
+                  <span v-if="selectedEmoji">{{ selectedEmoji }}</span>
+                  <span v-else>
+                    <FaceSmileIcon class="h-5 w-5" />
+                  </span>
                 </button>
 
                 <div
