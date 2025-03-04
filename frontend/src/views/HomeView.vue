@@ -11,6 +11,7 @@ export interface Habit {
   description: string
   creationDate: string
   habitLogs: Array<HabitLog>
+  emoji: string
 }
 
 export interface HabitLog {
