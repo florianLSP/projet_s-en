@@ -54,6 +54,7 @@ def register_routes(app, db):
                         .order_by(desc(HabitLog.date))
                         .all()
                     ],
+                    "emoji": habit.emoji,
                 }
             )
         return jsonify(habits)
@@ -64,8 +65,7 @@ def register_routes(app, db):
             return jsonify({"error": "le champ 'name' est requis"}), 400
 
         new_habit = Habit(
-            name=data["name"],
-            description=data["description"],
+            name=data["name"], description=data["description"], emoji=data["emoji"]
         )
         db.session.add(new_habit)
         db.session.commit()
@@ -93,6 +93,7 @@ def register_routes(app, db):
                             {"habit_id": log.habit_id, "date": log.date}
                             for log in new_habit.habit_logs
                         ],
+                        "emoji": new_habit.emoji,
                     },
                 }
             ), 201
