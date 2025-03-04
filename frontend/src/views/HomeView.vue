@@ -46,6 +46,7 @@ onMounted(fetchHabits)
             :description="habit.description"
             :creationDate="habit.creationDate"
             :logs="habit.habitLogs"
+            :emoji="habit.emoji"
           />
         </div>
       </div>

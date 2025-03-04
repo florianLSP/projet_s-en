@@ -23,6 +23,10 @@ const props = defineProps({
     type: Array<HabitLog>,
     required: true,
   },
+  emoji: {
+    type: String,
+    required: true,
+  },
 })
 
 function toggleMenu() {
@@ -120,7 +124,7 @@ onBeforeUnmount(() => {
       <div class="flex flex-col px-4 pb-5 space-y-4">
         <div class="flex flex-col items-center">
           <h5 class="mb-1 text-xl font-medium text-gray-900 dark:text-white capitalize">
-            {{ props.name }}
+            {{ props.emoji }} {{ props.name }}
           </h5>
           <p class="text-sm text-gray-500 dark:text-gray-400">
             Date de création: {{ habitStore.formatDate(props.creationDate) }}
